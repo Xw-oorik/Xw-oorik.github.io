@@ -1,0 +1,281 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Python装饰器 |    white.</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          white.
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        white.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Python装饰器</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 17 2023</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h1 id="锅巴py"><a href="#锅巴py" class="headerlink" title="锅巴py"></a>锅巴py</h1><h2 id="Python小白杀猪刀，装饰器"><a href="#Python小白杀猪刀，装饰器" class="headerlink" title="Python小白杀猪刀，装饰器"></a>Python小白杀猪刀，装饰器</h2><p><strong>装饰器</strong>的作用就是为已经存在的对象添加额外的功能，你肯定听着很懵逼，下面从例子带你了解他的原理</p>
+<p><strong>go~~</strong></p>
+<h3 id="plus1"><a href="#plus1" class="headerlink" title="plus1:"></a>plus1:</h3><p>现在有如下函数，我们需要将这个函数的日志打印到终端</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27; 我被调用执行啦 &#x27;</span>)  <span class="comment"># 新增打印日志语句</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">add(<span class="number">100</span>,<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"> 我被调用执行啦</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是仔细思考，打印日志是一个独立的功能，它和 add 函数本身并没有什么关联关系，我们说一个函数是为完成一个工程的，所以直接写在函数里面不是不可以，但是不建议，并且打印日志属于调试信息功能，与业务无关，不应该放在业务函数加法中。<br>  如果不需要写在函数的里面，那么我们得想办法写在函数的外面。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn, x, y</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27; 函数开始执行 &#x27;</span>)</span><br><span class="line">    res = fn(x, y)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27; 函数执行完毕 &#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">logger(add,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样就解决了打印语句在函数内定义的问题了。</li>
+<li>但是如果 add 函数的形参很多，我们要挨个写上吗？所以 * args,**kwargs 帮了我们很大的忙</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn, *args, **kwargs</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27; 函数开始执行 &#x27;</span>)</span><br><span class="line">    res = fn(*args, **kwargs)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27; 函数执行完毕 &#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">logger(add,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="plus2"><a href="#plus2" class="headerlink" title="plus2:"></a>plus2:</h3><p>有个专业术语叫做<strong>柯里化</strong>（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。（来自维基百科）</p>
+<p>总结一下：柯里化指的就是将原来接受两个参数的函数变成新的接受一个参数的函数的过程。新的函数返回一个以原有第二个参数为参数的函数。其数学表达式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z = f(x, y) </span><br><span class="line"><span class="comment"># 转换成 </span></span><br><span class="line">z = f(x)(y) </span><br><span class="line"><span class="comment"># 的形式</span></span><br></pre></td></tr></table></figure>
+
+<p>这里把经典的 add 函数拿来进行转换：</p>
+<p>想要转换为 add(4)(5)，那么 add(4) 必须要返回一个函数，否则无法将 5 当作参数传入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">new_add</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(<span class="params">y</span>):</span><br><span class="line">        <span class="keyword">return</span> x + y</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(add(<span class="number">4</span>, <span class="number">5</span>))     <span class="comment"># 9</span></span><br><span class="line"><span class="built_in">print</span>(new_add(<span class="number">4</span>)(<span class="number">5</span>)) <span class="comment"># 9</span></span><br><span class="line"><span class="built_in">print</span>(add(<span class="number">4</span>, <span class="number">5</span>) == new_add(<span class="number">4</span>)(<span class="number">5</span>))  <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+
+<p>其实就是一个函数套函数的技巧。</p>
+<hr>
+<h3 id="plus3"><a href="#plus3" class="headerlink" title="plus3:"></a>plus3:</h3><p>对于最开始案例的函数调用给外人看太丑了吧，因此python引入了柯里化这种思想，我们去改进一下上面的add,logger案例，让他变的更美观，更优雅</p>
+<p>结合plus2的柯里化去改进plus1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args,**kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数被执行了&quot;</span>)</span><br><span class="line">        res=fn(*args,**kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数执行完毕&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line">logger(add)(<span class="number">4</span>,<span class="number">5</span>)  </span><br><span class="line"> <span class="comment">#-&gt;fn接收add函数名，(4,5)是add参数，被wrapper(*args,**kwargs)接收</span></span><br><span class="line"> <span class="comment">#其实wrapper函数就成了add函数</span></span><br></pre></td></tr></table></figure>
+
+<p>​	这样看起来是不是就好看多了？当指定 logger(add)(4,5) 时，才会打印日志，但如果想要在所有调用 add 函数的地方，我们还需要在所有调用 add 的地方修改为 logger(add)(参数), 想一想，<strong>如果我能把 logger(add) 变成 add 是不是就可以直接写成 add(4,5) 了呢？</strong><br>​	其实上面的调用形式就等于如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">logger(add)(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">--------</span><br><span class="line">add = logger(add)</span><br><span class="line">add(<span class="number">4</span>,<span class="number">5</span>)    <span class="comment"># 将 add 重新指向了新的函数 wrapper</span></span><br></pre></td></tr></table></figure>
+
+<p>​	按照柯里化的原型中 logger(add) 返回了一个函数 wrapper，而我们的(4,5) 其实是传递给了 wrapper，结合我们前面所学的高阶函数，这里的 wrapper，是一个闭包函数，因为在内部对 fn 进行了执行，这个fn接收的就是add函数名，调的就是add函数，我们在执行 wrapper 的同时，也会执行原来的函数 fn(add)，并且wrapper添加了打印日志的功能</p>
+<p>这样形式的logger 函数就是一个装饰器函数！！！装饰了add函数</p>
+<hr>
+<p>当然看很多公司代码或者框架源码的时候都不会这么复杂的调用，他会利用到语法糖@去简化调用书写，<strong>一个@修饰符就是一个函数【格式：*@修饰名*】</strong>，它将被修饰的函数作为参数，并返回修饰后的同名函数或其他可调用的东西（如果返回不是一个可调用的对象那么会报错）</p>
+<p>注意注意，python里面的变量名，变量名！看上面的例子return wrapper，就是返回了这个函数名，所以需要我们后面自己去调用，，有的人查资料看到说@语法糖会自己直接执行调用，纯属扯淡，自己调是因为他装饰器函数最后返回了一个函数调用(),而且是没参数的那种函数，，当然你直接带实参也是可以的，，不过推荐就返回函数名，下民自己调，自己把握时机</p>
+<p><strong>举三个代码例子就行：</strong></p>
+<p>无参的，返回函数调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数被执行了&quot;</span>)</span><br><span class="line">        res=fn()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数执行完毕&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper()  <span class="comment">#注意这里</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">@logger            </span><span class="comment">#不用我们去调用，自动调用返回了</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;add&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>返回函数名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数被执行了&quot;</span>)</span><br><span class="line">        res=fn()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数执行完毕&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper  <span class="comment">#注意这里</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">@logger</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;add&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">add()<span class="comment">#自己调用一下</span></span><br></pre></td></tr></table></figure>
+
+<p>带参的返回函数调用：需要我们自己去指定实参</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">x,y</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数被执行了&quot;</span>)</span><br><span class="line">        res=fn(x,y)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;函数执行完毕&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper(<span class="number">2</span>,<span class="number">5</span>)  <span class="comment">#注意这里</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">@logger</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;add&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(x+y)</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br></pre></td></tr></table></figure>
+
+<p>看到这应该就对@+装饰器有了基础了解了吧~~~</p>
+<p>下面接着上面logger例子深入讲装饰器+@，改成如下样子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27; 函数被执行了 &#x27;</span>)</span><br><span class="line">        res = fn(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27; 函数执行完毕 &#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等于 add = logger(add)，，@标识logger是一个装饰器，python解释器会自己去找logger函数</span></span><br><span class="line"><span class="meta">@logger</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">add(<span class="number">4</span>,<span class="number">5</span>)<span class="comment">#直接这么调用，就可以</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>​     <strong>当解释器执行到<code>@logger</code>时，会自动把它下面的函数当作参数，传给 logger 函数，所以这里<code>@logger</code>其实就等于<code>add = logger(add)</code> 另外，logger 必须要定义在 add 函数之前才可以被装载！这一点很重要！</strong></p>
+</blockquote>
+<hr>
+<h3 id="下面说一下对于使用装饰器可以做的一些改进或者问题？？"><a href="#下面说一下对于使用装饰器可以做的一些改进或者问题？？" class="headerlink" title="下面说一下对于使用装饰器可以做的一些改进或者问题？？"></a>下面说一下对于使用装饰器可以做的一些改进或者问题？？</h3><p>利用装饰器计算如下函数的运行时间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">fn</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        start = datetime.datetime.now()</span><br><span class="line">        res = fn(*args, **kwargs)</span><br><span class="line">        duration = (datetime.datetime.now() - start).total_seconds()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27; 函数：&#123;&#125; 执行用时：&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(wrapper.__name__, duration))</span><br><span class="line">        <span class="keyword">return</span> res                    <span class="comment">#这里__name__ 表示当前函数的名称.</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行结果：</span></span><br><span class="line"></span><br><span class="line">In: add(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">函数：wrapper 执行用时：<span class="number">2.000944</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+什么鬼？这里为什么打印的是 wrapper 啊，为什么不是 add 呢？这样的话，别人不就发现我把这个函数给偷偷换掉了吗？不行不行，我得想个办法把函数的属性复制过来，由于这个功能和打印用时的装饰器不是一个功能，那么我们还得给装饰器再加一个装饰器。-_-!</p>
+</li>
+<li><p><input disabled="" type="checkbox"> </p>
+<pre><code class="python">import time
+import datetime
+
+def copy_properties(old_fn):
+    def wrapper(new_fn):
+        new_fn.__name__ = old_fn.__name__
+        return new_fn
+    return wrapper
+
+def logger(fn):
+    @copy_properties(fn)  # wrapper = copy_properties(fn)(wrapper)
+    def wrapper(*args, **kwargs):
+        start = datetime.datetime.now()
+        res = fn(*args, **kwargs)
+        total_seconds = (datetime.datetime.now() - start).total_seconds()
+        print(&#39; 函数：&#123;&#125; 执行用时：&#123;&#125;&#39;.format(wrapper.__name__,total_seconds))
+        return res
+    return wrapper
+
+@logger
+def add(x, y):
+    time.sleep(2)
+    return x + y
+
+add(4,5)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 解释器执行到`@copy_properties(fn)`时，会把下面的 wraper 装入，等于`wrapper = copy_properties(fn)(wrapper)`</span><br><span class="line">  - add就会跳到`@copy_properties，用add的名字old_fn.__name__赋值给new_fn.__name__，返回这个新名字，后面拿到的就是这个被替换的名字（狸猫换太子了属于是）</span><br><span class="line">  - 由于知道了参数的个数(一定是一个函数对象)，这里就没有使用 * args, **kwargs</span><br><span class="line">  - 函数的属性不止`__name__`一个，其他的怎么办呢？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">当然要我们在封装一个装饰器未免太麻烦了，以简便著称的python贴心的为我们提供了拷贝函数属性的内置函数</span><br><span class="line"></span><br><span class="line">### 拷贝函数属性</span><br><span class="line"></span><br><span class="line">  Python 的内置模块 functools 中，内置了很多常用的高阶函数，其中 wraps 就是用来拷贝函数的属性及签名信息的。利用 wraps，我们就不需要自己编写 copy_properties 函数了，下面是修改后的版本：</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">import time</span><br><span class="line">import datetime</span><br><span class="line">import functools</span><br><span class="line"></span><br><span class="line">def logger(fn):</span><br><span class="line">    @functools.wraps(fn)  # wrapper = functools.wraps(fn)(wrapper)</span><br><span class="line">    def wrapper(*args, **kwargs):</span><br><span class="line">        start = datetime.datetime.now()</span><br><span class="line">        res = fn(*args, **kwargs)</span><br><span class="line">        total_seconds = (datetime.datetime.now() - start).total_seconds()</span><br><span class="line">        print(&#x27; 函数：&#123;&#125; 执行用时：&#123;&#125;&#x27;.format(wrapper.__name__,total_seconds))</span><br><span class="line">        return res</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@logger</span><br><span class="line">def add(x, y):</span><br><span class="line">    time.sleep(2)</span><br><span class="line">    return x + y</span><br><span class="line"></span><br><span class="line">add(4,5)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+通过使用<code>@functools.wraps(fn)</code> 我们可以方便的拷贝函数的属性签名信息，比如：<code>__module__</code>、<code>__name__</code>、<code>__qualname__</code>、<code>__doc__</code>、<code>__annotations__</code> 等，这些属性信息，将在后续部分进行讲解，这里知道即可</p>
+</li>
+</ul>
+<hr>
+<p>上面演示的都是带一个参数的装饰器，Python称这种装饰器为无参装饰器，因为语法糖的表现形式就是 <code>@logger</code>, 下面要说的是带参数的装饰器，即 <code>@logger(args)</code></p>
+<p>以上述函数为例，我们需要记录当函数执行超过一定时间时的日志信息，该怎么办呢？假设这个时间是 5 秒，那么很显然，我们需要把这个时间变量传入到装饰器中进行判断。也就是说我们需要写成这种形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger(<span class="number">5</span>)(add)(<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>logger（5）返回一个函数，，其实是函数名，，之后这个函数名再(add)，等于把add当参数传进去，后面跟着add的参数（4,5），</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logger</span>(<span class="params">var</span>):<span class="comment"># logger的参数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(<span class="params">func</span>): <span class="comment">#接收add</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">            start = datetime.datetime.now()</span><br><span class="line">            res = func(*args, **kwargs)</span><br><span class="line">            total_seconds = (datetime.datetime.now() - start).total_seconds()</span><br><span class="line">            <span class="keyword">if</span> total_seconds &gt; var:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27; 函数执行时间过长 &#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger(<span class="params"><span class="number">5</span></span>)  </span><span class="comment"># logger(5)(add)(4,5)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    time.sleep(<span class="number">6</span>)</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">add(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="comment">#等于不要@语法糖这么去调用，logger(5)(add)(4,5)</span></span><br></pre></td></tr></table></figure>
+
+
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Python%E5%B0%8F%E7%99%BD%E6%9D%80%E7%8C%AA%E5%88%80%EF%BC%8C%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="space-toc-text">Python小白杀猪刀，装饰器</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1563250958@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+</body>
+</html>
