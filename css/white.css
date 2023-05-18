@@ -298,6 +298,20 @@ a {
 .gitalk-saysay > #gitalk-container .gt-counts {
   display: none;
 }
+.markdown-section img {
+  max-width: 100%;
+  padding: 0.5em 0;
+  margin: auto;
+  display: block;
+}
+.caption {
+  color: #444;
+  display: block;
+  font-size: 0.9em;
+  margin-top: 0.1em;
+  position: relative;
+  text-align: center;
+}
 .img-show-inner {
   margin-top: 50px;
   display: flex;
