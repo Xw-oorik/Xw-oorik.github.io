@@ -61,25 +61,6 @@
     
     
     <entry>
-      <title>Typora Modify the color🎃</title>
-      <link href="/2023/05/15/typora%20color1/"/>
-      <url>/2023/05/15/typora%20color1/</url>
-      
-        <content type="html"><![CDATA[<p>分享一个自己常用的Emoji表情网站:✨<a href="https://emojixd.com/">🤣 Emoji表情大全，颜文字百科 💌 - EmojiXD</a></p><p>![image-20230518212617569](..&#x2F;images&#x2F;typora color1&#x2F;image-20230518212617569.png)</p><p>推荐阅读:<a href="https://blog.csdn.net/Treasure99/article/details/105601866"> Markdown文字颜色、高亮、字体字号设置_markdown文字高亮语法_</a></p><h2 id="用Typora时改变字体颜色，自己常用的方式"><a href="#用Typora时改变字体颜色，自己常用的方式" class="headerlink" title="用Typora时改变字体颜色，自己常用的方式"></a>用Typora时改变字体颜色，自己常用的方式</h2><p>&#x3D;&#x3D;代码：用的就是html的语法格式&#x3D;&#x3D;</p><pre><code class="html">&lt;font color=&#39;orange&#39;&gt;并发&lt;/font&gt;</code></pre><p><font color='orange'>并发</font><br>需要什么颜色和字体直接改就可以了，下面给大家一些个人感觉还不错的颜色，并不是单词名字就和显示的一样，大家用了才能看到</p><p>Apricot ：杏色，显示的是红色比红色要淡</p><p>Peach : 桃色，但显示出来是翠绿色</p><p>each ：刚刚删掉Peach想测试小写是否可以（是可以的），而看到这个竟然也有颜色，还挺好看</p><p>Bittersweet ：苦乐参半色，嘻嘻</p><p>RedOrange ：红色</p><p>BrickRed ：比苦乐参半色要浅</p><p>Salmon ：橙色的感觉</p><p>Magenta ：粉紫的感觉</p><p>VioletRed ：深粉的感觉</p><p>Rhodamine ：龙井绿茶的感觉</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Tips </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hello World🖥️</title>
       <link href="/2023/05/15/hello-world/"/>
       <url>/2023/05/15/hello-world/</url>
@@ -90,6 +71,25 @@
       <categories>
           
           <category> Life </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Typora Modify the color🎃</title>
+      <link href="/2023/05/15/typora%20color1/"/>
+      <url>/2023/05/15/typora%20color1/</url>
+      
+        <content type="html"><![CDATA[<p>分享一个自己常用的Emoji表情网站:✨<a href="https://emojixd.com/">🤣 Emoji表情大全，颜文字百科 💌 - EmojiXD</a></p><p>![image-20230518212617569](..&#x2F;images&#x2F;typora color1&#x2F;image-20230518212617569.png)</p><p>推荐阅读:<a href="https://blog.csdn.net/Treasure99/article/details/105601866"> Markdown文字颜色、高亮、字体字号设置_markdown文字高亮语法_</a></p><h2 id="用Typora时改变字体颜色，自己常用的方式"><a href="#用Typora时改变字体颜色，自己常用的方式" class="headerlink" title="用Typora时改变字体颜色，自己常用的方式"></a>用Typora时改变字体颜色，自己常用的方式</h2><p>&#x3D;&#x3D;代码：用的就是html的语法格式&#x3D;&#x3D;</p><pre><code class="html">&lt;font color=&#39;orange&#39;&gt;并发&lt;/font&gt;</code></pre><p><font color='orange'>并发</font><br>需要什么颜色和字体直接改就可以了，下面给大家一些个人感觉还不错的颜色，并不是单词名字就和显示的一样，大家用了才能看到</p><p>Apricot ：杏色，显示的是红色比红色要淡</p><p>Peach : 桃色，但显示出来是翠绿色</p><p>each ：刚刚删掉Peach想测试小写是否可以（是可以的），而看到这个竟然也有颜色，还挺好看</p><p>Bittersweet ：苦乐参半色，嘻嘻</p><p>RedOrange ：红色</p><p>BrickRed ：比苦乐参半色要浅</p><p>Salmon ：橙色的感觉</p><p>Magenta ：粉紫的感觉</p><p>VioletRed ：深粉的感觉</p><p>Rhodamine ：龙井绿茶的感觉</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tips </category>
           
       </categories>
       
