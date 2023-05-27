@@ -1,0 +1,569 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Cpp模板细讲 |    Oorik.</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+  <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/emoji-18/61/21-64.png" type="image/x-icon">
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Oorik.
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             CATEGORIES
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%BF%9B%E9%98%B6/">Cpp进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C%E8%BF%9B%E9%98%B6/">C进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tips/">Tips</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></li></ul>
+             </div>
+          </li>
+        
+        
+        <a href="/search">
+          <li class="menu-li  animate__animated  animate__fadeInUp">
+            <i class="ri-search-line"></i>
+          </li>
+        </a>
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Oorik.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+    <a href="/search">  
+      <div class="mobile-menu-child  animate__animated  animate__fadeInUp">
+        <i class="ri-search-line"></i>
+      </div>
+    </a>
+    
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Cpp模板细讲</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 22 2023</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h1 id="【C-】模板声明与定义不分离"><a href="#【C-】模板声明与定义不分离" class="headerlink" title="【C++】模板声明与定义不分离"></a>【C++】模板声明与定义不分离</h1><p>以下两个问题由chatgpt回答</p>
+<h3 id="x3D-x3D-从编译阶段和运行阶段说说C-中-模板代码-是怎么变化的-x3D-x3D"><a href="#x3D-x3D-从编译阶段和运行阶段说说C-中-模板代码-是怎么变化的-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;从编译阶段和运行阶段说说C++中 模板代码 是怎么变化的?&#x3D;&#x3D;"></a>&#x3D;&#x3D;从编译阶段和运行阶段说说C++中 模板代码 是怎么变化的?&#x3D;&#x3D;</h3><blockquote>
+<p><strong>在 C++ 中，模板代码是在编译阶段进行处理的。编译器会根据代码模板生成多个不同的实例，这些实例化的模板代码将会在运行阶段被调用。</strong></p>
+<p><strong>在编译阶段，模板代码的定义会被解析和检查错误。编译器会根据模板参数的类型和实例化时传入的参数类型，生成符合类型要求的实际函数或类定义，并在该源代码文件或库中保存它们。</strong></p>
+<p><strong>当程序在运行阶段调用模板实例时，相应的实例化模板代码将会被加载到内存中，根据运行时传入的实参进行处理。</strong></p>
+<p><strong>因此，在 C++ 中，模板代码在编译时被解析，实例化，并生成可执行的代码。这使得模板函数和类成为了强大且灵活的工具，可以轻松地处理各种数据类型和算法。</strong></p>
+</blockquote>
+<h3 id="x3D-x3D-为什么模板的定义和声明要放在一个文件中-x3D-x3D"><a href="#x3D-x3D-为什么模板的定义和声明要放在一个文件中-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;为什么模板的定义和声明要放在一个文件中&#x3D;&#x3D;"></a>&#x3D;&#x3D;为什么模板的定义和声明要放在一个文件中&#x3D;&#x3D;</h3><blockquote>
+<p><strong>在C++中，模板代码通常需要定义和声明一起放在同一个文件中，这是因为模板的编译和实例化过程需要具体的类型信息，而这些信息只有在编译器看到模板的定义时才能了解。</strong></p>
+<p><strong>具体来说，当我们使用模板时，编译器需要知道模板的定义，以便为其生成实现代码。因此，模板代码的定义和声明需要在编译期可见。如果我们将模板的定义和声明分别放在不同的文件中，则只会在链接时发现错误，这会增加调试和维护的困难度。</strong></p>
+<p><strong>另外，C标准库也是将模板代码的定义和声明放在同一个文件中的。这为其他开发人员提供了一个良好的参考标准，方便使用和维护C模板的代码。</strong></p>
+<p><strong>因此，为了方便使用和维护C++模板代码，并且确保编译器能够正确生成和实例化模板，我们通常将模板的定义和声明放在同一个文件中。</strong></p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/270627626?sort=created">C++为什么要求把类声明和类实现进行分离？又为什么要求模板类的类声明和类实现要都放在头文件而不能分离? - 知乎 (zhihu.com)</a> 好文看看！！</p>
+<p>一般在写C++相关代码的时候，我们总习惯于将类声明和类实现进行分离。也就是说，类的声明一般写在.h文件中，而它的实现一般写在.cpp文件中。但是，在模板类中，这个习惯却要恰恰相反。即：要求模板类的类声明和类实现要都放在头文件，而不能分离。</p>
+<p>本文就对模板的这个奇特习惯进行分析。</p>
+<h3 id="分离式编译模式"><a href="#分离式编译模式" class="headerlink" title="分离式编译模式"></a>分离式编译模式</h3><p>在进行模板特性的讲解之前，首先需要了解一下C++的分离式编译模式。</p>
+<p>所谓分离编译模式，就是指：一个程序或者项目由若干个源文件共同实现，而每个源文件单独编译生成目标文件，最后将所有目标文件连接起来形成单一的可执行文件的过程。</p>
+<p>C&#x2F;C++组织源代码和生成可执行文件的方式就是分离式编译模式。</p>
+<p>简单粗暴的理解就是，一个C++项目分为若干个cpp文件和h文件，每个cpp文件单独编译成每个的目标文件，最终将每个cpp文件连接在一起组成最后的单一的可执行文件。这里最重要的点就是：编译是相对于每个cpp文件而言的。</p>
+<p>接下去的问题就是，对于编译每个cpp文件的时候，是否都需要每个类的实现？</p>
+<p>如果都需要每个类的实现，那么就只能将每个类的实现也都写到h文件中，这样在cpp文件中引入的h文件中，才会有每个类的实现；如果不需要每个类的实现，那么就没有必要将每个类的实现写到h文件中。</p>
+<p>C&#x2F;C++所采用的方法是：只要给出类的声明，就可以在本源文件中使用该类。由于每个源文件都是独立的编译单元，在当前源文件中使用但未在此类的实现，就假设在其他的源文件中实现好了。</p>
+<p>模板声明与定义<br>声明定义不分离<br>但是，分离式编译模式却驯不服模板。</p>
+<p>C++标准要求编译器在实例化模板时，必须在上下文中可以查看到其实现；而反过来，在看到实例化模板之前，编译器对模板的实现是不处理的。原因很简单，编译器怎么会预先知道typename实参是什么呢？因此模板的实例化与实现必须放到同一文件中。</p>
+<h3 id="《C-编程思想》说明了原因："><a href="#《C-编程思想》说明了原因：" class="headerlink" title="《C++编程思想》说明了原因："></a>《C++编程思想》说明了原因：</h3><p>模板定义很特殊。由template&lt;…&gt; 处理的任何东西都意味着编译器在当时不为它分配存储空间，它一直处于等待状态直到被一个模板实例告知。在编译器和连接器的某一处，有一机制能去掉指定模板的多重定义。所以为了容易使用，几乎总是在头文件中放置全部的模板声明和定义。</p>
+<p>简单来说：只有模板实例化时，编译器才会得知T实参是什么。而编译器在处理模板实例化时，不仅仅要看到模板的定义式，还需要模版的实现体。</p>
+<h3 id="为什么需要这样呢？"><a href="#为什么需要这样呢？" class="headerlink" title="为什么需要这样呢？"></a>为什么需要这样呢？</h3><p>比如说存在类Rect, 其类定义式写在test.h，类的实现体写在test.cpp中。对于模板来说，编译器在处理test.cpp文件时，编译器无法预知T的实参是什么，所以编译器对其实现是不作处理的。</p>
+<p>紧接着在main.cpp中用到了Rect，这个时候会实例化。也就是说，在test.h中会实例出对Rect进行类的声明。但是，由于分离式编译模式，在编译的时候只需要类的声明即可，因此编译是没有任何问题的。</p>
+<p>但是在链接的过程中，需要找到Rect的实现部分。但是上面也说了，编译是相对于每个cpp文件而言的。在test.cpp的编译的时候，由于不知道T的实参是什么，并没有对其进行处理。因此，Rect的实现自然并没有被编译，链接也就自然而然地因找不到而出错。</p>
+<p>也就是说，模板如果将类声明和类实现进行分离，那么分离式编译模式会导致在链接的时候出现问题。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>解释清楚了，接下来可以看一个例子：</p>
+<p>在test.h文件中，定义模板类Rect：</p>
+<pre><code class="c">#include &lt;iostream&gt;
+
+template&lt;typename T&gt;
+class Rect &#123;
+  public:
+    Rect(T l = 0.0f, T t = 0.0f, T r = 0.0f, T b = 0.0f) :
+      left_(l), top_(t), right_(r), bottom_(b) &#123;&#125;
+
+void display();
+
+T left_;
+T top_;
+T right_;
+T bottom_;
+
+&#125;;
+</code></pre>
+<p>在test.cpp文件中，定义模板类Rect方法的实现：</p>
+<pre><code class="c">#include &quot;test.h&quot;
+
+template&lt;typename T&gt;
+void Rect&lt;T&gt;::display() &#123;
+  std::cout &lt;&lt; left_ &lt;&lt; &quot; &quot; &lt;&lt; top_ &lt;&lt; &quot; &quot; &lt;&lt; right_
+    &lt;&lt; &quot; &quot; &lt;&lt; bottom_ &lt;&lt; std::endl;
+</code></pre>
+<p>最终在main.cpp文件中，使用改模板类：</p>
+<pre><code class="c">#include &lt;iostream&gt;
+#include &quot;test.h&quot;
+
+int main() &#123;
+  Rect&lt;float&gt; rect(1.1f, 2.2f, 3.3f, 4.4f);
+  rect.display();
+
+  return 0;
+&#125;
+</code></pre>
+<blockquote>
+<p>yngzmiao@yngzmiao-virtual-machine:~&#x2F;test&#x2F;build$ cmake .. &amp;&amp; make<br>– The C compiler identification is GNU 4.8.4<br>– The CXX compiler identification is GNU 4.8.4<br>– Check for working C compiler: &#x2F;usr&#x2F;bin&#x2F;cc<br>– Check for working C compiler: &#x2F;usr&#x2F;bin&#x2F;cc – works<br>– Detecting C compiler ABI info<br>– Detecting C compiler ABI info - done<br>– Detecting C compile features<br>– Detecting C compile features - done<br>– Check for working CXX compiler: &#x2F;usr&#x2F;bin&#x2F;c++<br>– Check for working CXX compiler: &#x2F;usr&#x2F;bin&#x2F;c++ – works<br>– Detecting CXX compiler ABI info<br>– Detecting CXX compiler ABI info - done<br>– Detecting CXX compile features<br>– Detecting CXX compile features - done<br>– Configuring done<br>– Generating done<br>– Build files have been written to: &#x2F;home&#x2F;yngzmiao&#x2F;test&#x2F;build<br>Scanning dependencies of target test<br>[ 25%] Building CXX object CMakeFiles&#x2F;test.dir&#x2F;test.cpp.o<br>[ 50%] Linking CXX static library libtest.a<br>[ 50%] Built target test<br>Scanning dependencies of target main<br>[ 75%] Building CXX object CMakeFiles&#x2F;main.dir&#x2F;main.cpp.o<br>[100%] Linking CXX executable main<br>CMakeFiles&#x2F;main.dir&#x2F;main.cpp.o：在函数‘main’中：<br>main.cpp:(.text+0x3c)：对‘Rect<float>::display()’未定义的引用<br>collect2: error: ld returned 1 exit status<br>make[2]: *** [main] 错误 1<br>make[1]: *** [CMakeFiles&#x2F;main.dir&#x2F;all] 错误 2<br>make: *** [all] 错误 2</p>
+<p>可以看出，改代码在ld的过程中出现了错误，即链接的时候没有找到实现而出错。</p>
+</blockquote>
+<p>如果将模板类的声明和实现不分离，都写在.h文件中。即如下：</p>
+<pre><code class="c">#include &lt;iostream&gt;
+
+template&lt;typename T&gt;
+class Rect &#123;
+  public:
+    Rect(T l = 0.0f, T t = 0.0f, T r = 0.0f, T b = 0.0f) :
+      left_(l), top_(t), right_(r), bottom_(b) &#123;&#125;
+void display() &#123;
+  std::cout &lt;&lt; left_ &lt;&lt; &quot; &quot; &lt;&lt; top_ &lt;&lt; &quot; &quot; &lt;&lt; right_
+    &lt;&lt; &quot; &quot; &lt;&lt; bottom_ &lt;&lt; std::endl;
+&#125;
+
+    T left_;
+    T top_;
+    T right_;
+    T bottom_;
+&#125;;
+</code></pre>
+<p>最终编译运行没有问题。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在分离式编译的环境下，编译器编译某一个cpp文件时并不知道另一个cpp文件的存在，也不会去查找（当遇到未决符号时它会寄希望于链接器）。</p>
+<p>这种模式在没有模板的情况下运行良好，但遇到模板时就傻眼了，因为模板仅在需要的时候才会实例化出来。所以，当编译器只看到模板的声明时，它不能实例化该模板，只能创建一个具有外部链接的符号并期待链接器能够将符号的地址决议出来。</p>
+<p>然而当实现该模板的cpp文件中没有用到模板的实例时，编译器懒得去实例化，所以，整个工程中就找不到一行模板实例的二进制代码，于是链接器也黔驴技穷了。</p>
+<h2 id="为什么-c-中函数模板和类模板的-声明与定义需要放到一起？"><a href="#为什么-c-中函数模板和类模板的-声明与定义需要放到一起？" class="headerlink" title="为什么 c++中函数模板和类模板的 声明与定义需要放到一起？"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangkele/p/7628141.html">为什么 c++中函数模板和类模板的 声明与定义需要放到一起？</a></h2><p>将模板的声明与定义写在一起实在很不优雅。尝试用“传统”方法，及在.h文件里声明,在.cpp文件里定义，</p>
+<p>然后在main函数里包含.h头文件，这样会报链接错误。why！！！！！！！！！！！！！</p>
+<p>这是因为函数模板要被实例化后才能成为真正的函数，在使用函数模板的源文件中包含函数模板的头文件，（carefully！！！）</p>
+<p>如果该头文件中只有声明，没有定义，那编译器无法实例化该模板，最终导致链接错误。（类模板同样！！）</p>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<pre><code> 1 //---------------test.h-------------------// 
+ 2  void f();//这里声明一个函数f 
+ 3 //---------------test.cpp--------------// 
+ 4  #include”test.h” 
+ 5  void f() 
+ 6  &#123; 
+ 7  …//do something 
+ 8  &#125; //这里实现出test.h中声明的f函数 
+ 9 //---------------main.cpp--------------// 
+10  #include”test.h” 
+11  int main() 
+12  &#123; 
+13      f(); //调用f
+14  &#125;
+</code></pre>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<p>编译时会生成两个obj文件，main.obj和test.obj，而在main.obj里并没有f函数的二进制代码，这些代码实际存在于test.obj中。</p>
+<p><strong>在main.obj中对 f 的调用只会生成一行call指令，call指令的地址由链接器生成。</strong></p>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<pre><code> 1 //-------------test.h----------------// 
+ 2  template&lt;class T&gt; 
+ 3  class A 
+ 4  &#123; 
+ 5     public: 
+ 6      void f(); //这里只是个声明 
+ 7  &#125;; 
+ 8 //---------------test.cpp-------------// 
+ 9  #include”test.h” 
+10  template&lt;class T&gt; 
+11  void A&lt;T&gt;::f() 
+12  &#123; 
+13  …//do something 
+14  &#125; 
+15 //---------------main.cpp---------------// 
+16  #include”test.h” 
+17  int main() 
+18  &#123; 
+19      A&lt;int&gt; a; 
+20     a. f(); 
+21  &#125;
+</code></pre>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<p>我们知道<strong>模板有个具现化的过程，在未被使用的时候是不会生成二进制文件的。所以当链接器去找f函数的地址时，因为在这之前没有调用过f()，test.obj里自然就没有f函数的二进制代码，于是就会报错。</strong></p>
+<h4 id="要使模板声明与定义分开也不是没有办法。"><a href="#要使模板声明与定义分开也不是没有办法。" class="headerlink" title="要使模板声明与定义分开也不是没有办法。"></a>要使模板声明与定义分开也不是没有办法。</h4><p><strong>第一种办法是在main函数里包含cpp文件</strong></p>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<pre><code> 1 //-------------test.h----------------// 
+ 2  template&lt;class T&gt; 
+ 3  class A 
+ 4  &#123; 
+ 5     public: 
+ 6      void f(); //这里只是个声明 
+ 7  &#125;; 
+ 8 //---------------test.cpp-------------// 
+ 9  #include”test.h” 
+10  template&lt;class T&gt; 
+11  void A&lt;T&gt;::f() 
+12  &#123; 
+13  …//do something 
+14  &#125; 
+15 //---------------main.cpp---------------// 
+16  #include”test.cpp” //careful！！！！！！！！！
+17  int main() 
+18  &#123; 
+19      A&lt;int&gt; a; 
+20     a. f(); 
+21  &#125;
+</code></pre>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<p>这样三个文件的内容通过include实际上包含在同一个文件里，自然就不会出错了</p>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<pre><code> 1 //-------------test.h----------------// 
+ 2  template&lt;class T&gt; 
+ 3  class A 
+ 4  &#123; 
+ 5     public: 
+ 6      void f(); //这里只是个声明 
+ 7  &#125;; 
+ 8 #include&lt;test_impl.h&gt;
+ 9 //---------------test_impl.h-------------// 
+10  template&lt;class T&gt; 
+11  void A&lt;T&gt;::f() 
+12  &#123; 
+13  …//do something 
+14  &#125; 
+15 //---------------main.cpp---------------// 
+16  #include”test.h” 
+17  int main() 
+18  &#123; 
+19      A&lt;int&gt; a; 
+20     a. f(); 
+21  &#125;
+</code></pre>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<p><strong>这两种方法实际上都是包含编译，没有本质的区别，不过感觉第二种方法看起来比较舒服</strong></p>
+<p><a href="javascript:void(0);">
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://common.cnblogs.com/images/copycode.gif" >
+        </sapn>
+      </a></p>
+<pre><code> 1 //-------------test.h----------------// 
+ 2  template&lt;class T&gt; 
+ 3  class A 
+ 4  &#123; 
+ 5     public: 
+ 6      void f(); //这里只是个声明 
+ 7  &#125;; 
+ 8 //---------------test.cpp-------------// 
+ 9  #include”test.h” 
+10  template&lt;class T&gt; 
+11  void A&lt;T&gt;::f() 
+12  &#123; 
+13  …//do something 
+14  &#125; 
+15 template class A&lt;int&gt;;//！！！！！！在这里实现了具现了类型  这样编译就不会有问题了  但是这样不太好  自己想为什么 ！！！
+16 //---------------main.cpp---------------// 
+17  #include”test.h” 
+18  int main() 
+19  &#123; 
+20      A&lt;int&gt; a; 
+21     a. f(); 
+22  &#125;
+</code></pre>
+<p>第三种就需要自己在test.cpp指明实例化</p>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">Cpp进阶</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2023/05/22/auto1/" class="post-categoris-bottom-link">
+                  auto进阶
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2023/05/22/cplus/" class="post-categoris-bottom-link">
+                  Cplusplus总结
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2023/05/22/cpp%E6%A8%A1%E6%9D%BF1/" class="post-categoris-bottom-link">
+                  Cpp模板细讲
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="space-toc-text">例子</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-c-%E4%B8%AD%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84-%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89%E9%9C%80%E8%A6%81%E6%94%BE%E5%88%B0%E4%B8%80%E8%B5%B7%EF%BC%9F"><span class="space-toc-text">为什么 c++中函数模板和类模板的 声明与定义需要放到一起？</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/Xw-oorik/xw-oorik.github.io">Pot ba</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/Xw-oorik/xw-oorik.github.io" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:820735157@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://blog.csdn.net/weixin_51609435?spm=1000.2115.3001.5343" target="_blank">
+                <i class="ri-pages-fill"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
+
+<link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js"> </script>
+
+<script src="/js/fancybox.js"></script>
+
