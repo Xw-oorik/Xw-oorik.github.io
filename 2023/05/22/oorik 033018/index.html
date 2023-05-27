@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Hello World🖥️ |    Oorik.</title>
+  <title>   Oorik.</title>
   <meta name="description" content="A minimalist theme for hexo.">
   <!-- 标签页图标 -->
   
@@ -129,8 +129,8 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">Hello World🖥️</div>
-      <div class="meta-intro animate__animated  animate__fadeInUp">May 15 2023</div>
+      <div class="post-title animate__animated  animate__fadeInUp"></div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 22 2023</div>
       
     </div>
     <div class="post-content-inner">
@@ -140,82 +140,103 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+        <p>oorik 033018</p>
+<p>music数据库</p>
+<pre><code class="c">* fetchone() ：
+
+    返回单个的元组，也就是一条记录(row)，如果没有结果 , 则返回 None
+
+    cu.execute(&quot;select user,password from user where user=&#39;%s&#39;&quot; %name)
+    arr= cur.fetchone()   ----此时 通过 arr[0],arr[1]可以依次访问user,password
+
+* fetchall() ：
+
+   返回多个元组，即返回多条记录(rows),如果没有结果,则返回 ()
+
+   cur.execute(&quot;select * from user&quot;)
+
+注意：在MySQL中是null，而在Python中则是None
+
+①查询出有多条数据时：
+
+cursor.fetchone()：将只取最上面的第一条结果，返回单个元组如(&#39;id&#39;,&#39;name&#39;)，然后多次循环使用cursor.fetchone()，依次取得下一条结果，直到为空。所以退出条件就是结果为空时
+
+可以这么写
+sql=f&quot;SELECT msname,name,pass as &#39;通过否&#39;,level from music_usr WHERE id=&#123;mid&#125;&quot;
+count=cursor.execute(sql)
+if count == 0:
+    print(&quot;表为空&quot;)
+    return
+
+while True:
+    result = cursor.fetchone()
+    if not result:  #关键这里 ，退出条件
+        break
+    print(f&quot;报考类型:[&#123;result[0]&#125;]---姓名:[&#123;result[1]&#125;]---是否通过:[&#123;result[2]&#125;]---报考等级:[&#123;result[3]&#125;]&quot;)
+
+cursor.fetchall() :将返回所有结果，返回二维元组，如((&#39;id&#39;,&#39;name&#39;),(&#39;id&#39;,&#39;name&#39;)),
+
+②查询只有一条数据时：
+
+cursor.fetchone()：将只返回一条结果，返回单个元组如(&#39;id&#39;,&#39;name&#39;)。
+
+cursor.fetchall() :也将返回所有结果，返回二维元组，如((&#39;id&#39;,&#39;name&#39;),),
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+<h3 id="可以用来判断当前对象是哪个类的，学到的写法"><a href="#可以用来判断当前对象是哪个类的，学到的写法" class="headerlink" title="可以用来判断当前对象是哪个类的，学到的写法"></a>可以用来判断当前对象是哪个类的，学到的写法</h3><p>eg1:  这是我那个考级代码里，用来判断看传入的对象是哪个，后面sql语句就去对应的table表去找</p>
+<p>有两个类 一个User和Manager类</p>
+<pre><code class="python">table=None
+su=self.__class__.__name__
+if su==&#39;User&#39;:
+    table=&#39;usr&#39;
+else:
+    table=&#39;admin&#39;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+<p>第二种写法：</p>
+<pre><code class="python">table=None    
+if isinstance(self,User):  
+    table=&#39;usr&#39;
+else:
+    table=&#39;admin&#39;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+<p>用户模式</p>
+<p>学生登录：账号，密码</p>
+<p>注册：账号，密码，姓名</p>
+<p>音乐类型：名称，id编号</p>
+<p>每个音乐，2-10级</p>
+<p>学生选择音乐报名</p>
+<p>查询考级成功失败</p>
+<p>进来-》0 用户   1-》管理员</p>
+<p> 学生用户表：usr</p>
+<pre><code class="c">insert into usr(name,account,password)
+values(&quot;张三&quot;,110102,&quot;zs1234&quot;);
+
+insert into usr(name,account,password)
+values(&quot;李四&quot;,111001,&quot;ls6666&quot;);
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>![image-20230522162144249](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522162144249.png)</p>
+<p>管理员 admin</p>
+<pre><code class="python">insert into admin(account,password)
+values(553322,&quot;000111&quot;)
+</code></pre>
+<p>![image-20230522162348115](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522162348115.png)</p>
+<p>![image-20230522162453290](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522162453290.png)</p>
+<p>usr只能 查询信息，报名</p>
+<p>admin增添，，增加音乐类型，判定考试成功失败，增添具体音乐等级</p>
+<p>musics存所有音乐大类，多少个人报名了</p>
+<p>![image-20230522174656944](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522174656944.png)</p>
+<p>music_usr 查人和具体报名的音乐信息，以及通过考试没</p>
+<p>pass通过，fail失败，  not started  没有开始</p>
+<p>![image-20230522230806183](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522230806183.png)</p>
+<p>levels 音乐等级和每个报名的人数</p>
+<p>![image-20230522230817635](..&#x2F;images&#x2F;oorik 033018&#x2F;image-20230522230817635.png)</p>
 
         <!-- 分类文章 -->
-        
-          <div class="post-categoris-bottom">
-            <div class="post-categoris-name">Life</div>
-            <ul>
-            
-            
-            
-            
-              
-                <li class="me base">
-                  <a  href="/2023/05/15/hello-world/" class="post-categoris-bottom-link">
-                  Hello World🖥️
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2023/05/19/520/" class="post-categoris-bottom-link">
-                  520🫦
-                </a>
-                </li>
-              
-              
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            </ul>
-
-          </div>
-
         
       </div>
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Quick-Start"><span class="space-toc-text">Quick Start</span></a></li></ol>
+            
            </div>
         
       </div>

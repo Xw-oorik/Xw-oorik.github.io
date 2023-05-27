@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Hello World🖥️ |    Oorik.</title>
+  <title>   Oorik.</title>
   <meta name="description" content="A minimalist theme for hexo.">
   <!-- 标签页图标 -->
   
@@ -129,8 +129,8 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">Hello World🖥️</div>
-      <div class="meta-intro animate__animated  animate__fadeInUp">May 15 2023</div>
+      <div class="post-title animate__animated  animate__fadeInUp"></div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 27 2023</div>
       
     </div>
     <div class="post-content-inner">
@@ -140,82 +140,54 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+        <h1 id="curl-libcurl简化你的网络请求！"><a href="#curl-libcurl简化你的网络请求！" class="headerlink" title="curl+libcurl简化你的网络请求！"></a>curl+libcurl简化你的网络请求！</h1><p>curl 是一个linux工具，通过命令行来实现其强大的功能。但通过libcurl，可以在各种开发环境中通过编码的 形式实现curl上传、下载功能，其中涉及GET、PUT、POST、DELETE等方法。cURL支持的通信协议有FTP、FTPS、HTTP、HTTPS、TFTP、SFTP、Gopher、SCP、Telnet、DICT、FILE、LDAP、LDAPS、IMAP、POP3、SMTP和RTSP。可谓是支持力度相当大的一个工具了。</p>
+<h3 id="curl命令行工具：Linux-Curl命令详解教程-myfreax"><a href="#curl命令行工具：Linux-Curl命令详解教程-myfreax" class="headerlink" title="curl命令行工具：Linux Curl命令详解教程 | myfreax"></a>curl命令行工具：<a target="_blank" rel="noopener" href="https://www.myfreax.com/curl-command-examples/">Linux Curl命令详解教程 | myfreax</a></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013514928/article/details/102810250"> curl命令用法_curl 命令_追梦菜鸟的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">curl 的用法指南 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2011/09/curl.html">curl网站开发指南 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+<p>curl -o 文件名 网址 可以把对应网页保存下来到文件里</p>
+<p>-o 保存成文件</p>
+<p>-F是用来传二进制文件的 curl -F ‘xx文件’ 地址&#x2F;发post请求传表单数据，上面实现就是用到这个参数</p>
+<p>-H 用来加http请求头的</p>
+<p>做断点续传可以用-C去恢复上次的传输进度</p>
+<h2 id="libcurl库学习"><a href="#libcurl库学习" class="headerlink" title="libcurl库学习"></a>libcurl库学习</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heluan/p/10177475.html#:~:text=(%E8%BD%AC)libcu,%EF%BC%8C%E5%A5%BD%E9%95%BF%EF%BC%8C%E5%A5%BD%E8%AF%A6%E7%BB%86%E3%80%82">(转)libcurl库使用方法，好长，好详细。 - _浪潮之巅.☆ - 博客园 (cnblogs.com)</a>  感觉光看这个就非常的详细了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43608153/article/details/90811132"> curl 简单实例 （c代码通过 curl-url 实现信息获取）_curl c_我若成精的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zengraoli/article/details/11580167">Libcurl使用入门教程_libcurl c++ example_每天看一遍，防止恋爱&amp;&amp;堕落的博客-CSDN博客</a></p>
+<p>可以用libcurl库函数去操作完成curl命令</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+#include &lt;curl/curl.h&gt;
+
+int main() &#123;
+    CURL *curl;
+    CURLcode res;
+    char *url = &quot;http://www.baidu.com&quot;;
+
+    curl = curl_easy_init();
+    if(curl) &#123;
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        res = curl_easy_perform(curl);
+        if(res == CURLE_OK)
+            printf(&quot;Request succeeded!\n&quot;);
+        else
+            printf(&quot;Request failed: %s\n&quot;, curl_easy_strerror(res));
+
+        curl_easy_cleanup(curl);
+    &#125;
+    printf(&quot;over!\n&quot;);
+    return 0;
+&#125;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>gcc -o main pp.c -lcurl编译</p>
+<p>使用最开始要初始化libcurl，可以用curl_global_init做全局配置他只能调用一次，自己不调用的话系统在curl_easy_init()前会自动调用，（多线程会有问题，最好手动调）这个demo是使用<code>curl_easy_init()</code>函数初始化libcurl库，并使用<code>curl_easy_setopt()</code>函数设置要执行的URL。发起http get请求获取相应的请求状态，用<code>curl_easy_perform()</code>函数执行实际的请求，并返回状态码。最后，<code>curl_easy_cleanup()</code>函数释放curl库。</p>
+<p>用libcurl做sftp去传东西，有关密码的也能用cur_easy_setopt这个flag:CURLOPT_USERPWD去做密码，私钥可以用CURLOPT_KEYPASSWD去设置</p>
 
         <!-- 分类文章 -->
-        
-          <div class="post-categoris-bottom">
-            <div class="post-categoris-name">Life</div>
-            <ul>
-            
-            
-            
-            
-              
-                <li class="me base">
-                  <a  href="/2023/05/15/hello-world/" class="post-categoris-bottom-link">
-                  Hello World🖥️
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2023/05/19/520/" class="post-categoris-bottom-link">
-                  520🫦
-                </a>
-                </li>
-              
-              
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            </ul>
-
-          </div>
-
         
       </div>
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Quick-Start"><span class="space-toc-text">Quick Start</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#libcurl%E5%BA%93%E5%AD%A6%E4%B9%A0"><span class="space-toc-text">libcurl库学习</span></a></li></ol>
            </div>
         
       </div>

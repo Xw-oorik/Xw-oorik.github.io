@@ -1,0 +1,326 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>   Oorik.</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+  <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/emoji-18/61/21-64.png" type="image/x-icon">
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Oorik.
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             CATEGORIES
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tips/">Tips</a></li></ul>
+             </div>
+          </li>
+        
+        
+        <a href="/search">
+          <li class="menu-li  animate__animated  animate__fadeInUp">
+            <i class="ri-search-line"></i>
+          </li>
+        </a>
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Oorik.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+    <a href="/search">  
+      <div class="mobile-menu-child  animate__animated  animate__fadeInUp">
+        <i class="ri-search-line"></i>
+      </div>
+    </a>
+    
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp"></div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 27 2023</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="net-snmp学习"><a href="#net-snmp学习" class="headerlink" title="net-snmp学习"></a>net-snmp学习</h2><p>流程记录-&gt;</p>
+<p><strong>程序开始需要声明几个变量：</strong><br>snmp_session，里面存储的是调用者与谁交互的信息，对标nta-&gt;三方。需要两个，一个用来填充信息，一个是库返回的指针<br>snmp_pdu 保存我们将要发送到远程主机的所有信息。他将为对方要发回的信息声明一秒钟<br>这俩都是struct结构体<br>oid类型  存oid  -》比如  oid  anOID [10]<br>variable_list 存储的是想要通过snmp操作的变量，也是结构体</p>
+<p>接下来使用init_snmp初始化snmp 库，可以在调用的时候指定文件名，就会自动读取配置文件，默认&#x2F;etc下</p>
+<p>初始化完成，用snmp_sess_init创建一个会话去和nms交互，可以用snmp_sess_init去设置一下会话的属性，就是前面snmp_session结构体</p>
+<p>完事用snmp_open去打开会话，打开他之后会返回一个指针，这个指针就用开始定义的snmp_session指针去接收，指向我们应该使用的另一个会话</p>
+<p>接下来，我们创建要发送到远程主机的 PDU ，当我们要求提供信息时。示例中这是snmpget程序使用的。它检索用于初始化它的每个 OID 的值。</p>
+<p>因此，当我们用我们请求的 oid 填充它。让我们获取此示例的 system.sysDescr.0 变量。可以自己将数字无符号整数值放入我们上面创建的 anOID 数组中。或者用</p>
+<pre><code>get_node(&quot;sysDescr.0&quot;, anOID, &amp;anOID_len); 拿到oid 
+   read_objid(&quot;system.sysDescr.0&quot;, anOID, &amp;anOID_len); 解析
+   
+</code></pre>
+<p>下来，我们使用snmp_add_null_var将此具有 NULL 值的 oid 添加到 PDU</p>
+<p>最后，利用snmp_synch_response，我们可以使用会话指针和 pdu 发送请求，并返回状态和响应，该状态和响应存储在新定位错误的响应 pdu 指针中</p>
+<p>最后snmp_sess_close关闭会话</p>
+<p>用snmp_shutdown清理snmp库</p>
+<h4 id="示例demo"><a href="#示例demo" class="headerlink" title="示例demo:"></a>示例demo:</h4><pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;net-snmp/net-snmp-config.h&gt;
+#include &lt;net-snmp/net-snmp-includes.h&gt;
+
+void print_variable(const oid *obj, const size_t obj_len, const netsnmp_variable_list *value)
+&#123;
+    int i;
+    char buf[1024];
+    switch(value-&gt;type) &#123;
+        case ASN_INTEGER:
+            printf(&quot;%s = %ld\n&quot;,snprint_objid(buf, sizeof(buf), obj, obj_len),*(value-&gt;val.integer));
+            break;
+        case ASN_OCTET_STR:
+            printf(&quot;%s = %.*s\n&quot;,snprint_objid(buf, sizeof(buf), obj, obj_len),value-&gt;val_len,value-&gt;val.string);
+            break;
+        default:
+            printf(&quot;%s = &quot;,snprint_objid(buf, sizeof(buf), obj, obj_len));
+            for(i=0;i&lt;value-&gt;val_len;i++) printf(&quot;%02X &quot;,value-&gt;val.string[i]);
+            printf(&quot;\n&quot;);
+            break;
+    &#125;
+&#125;
+
+int main(int argc, char ** argv) &#123;
+    struct snmp_session session, *snmp_sess_pointer;
+    struct snmp_pdu *pdu;
+    struct snmp_pdu *response;
+    oid anOID[MAX_OID_LEN];
+    size_t anOID_len;
+    netsnmp_variable_list *vars;
+
+    // 初始化SNMP库
+    init_snmp(&quot;snmp_app&quot;);
+
+    // 初始化会话
+    snmp_sess_init(&amp;session);
+    session.peername = argv[1]; // 指定SNMP代理程序的IP地址
+    session.version = SNMP_VERSION_2c; // 指定SNMP版本
+    session.community = &quot;public&quot;; // 指定社区字符串
+    session.community_len = strlen(session.community); // 计算社区字符串长度
+
+    // 开启SNMP会话
+    snmp_sess_pointer = snmp_sess_open(&amp;session);    
+    if (!snmp_sess_pointer) &#123;
+        snmp_perror(&quot;snmp error&quot;);
+        snmp_log(LOG_ERR, &quot;something horrible happened!!!\n&quot;);
+        exit(1);
+    &#125;
+
+    // 准备发送PDU
+    pdu = snmp_pdu_create(SNMP_MSG_GET); // 创建一个GET请求的PDU
+    anOID_len = MAX_OID_LEN;
+    if (read_objid(&quot;IF-MIB::ifInOctets.1&quot;, anOID, &amp;anOID_len)) &#123; // 解析OID字符串
+        snmp_perror(&quot;read_objid error&quot;);
+        exit(1);
+    &#125;
+    snmp_add_null_var(pdu, anOID, anOID_len); // 向PDU添加待查询的OID
+
+    // 发送SNMP请求并获取响应
+    if (snmp_synch_response(snmp_sess_pointer, pdu, &amp;response) == STAT_SUCCESS) &#123;
+        // 打印接收到的响应结果
+        for (vars = response-&gt;variables; vars; vars = vars-&gt;next_variable) &#123;
+            print_variable(vars-&gt;name, vars-&gt;name_length, vars);
+        &#125;
+    &#125; else &#123;
+        snmp_perror(&quot;snmp error&quot;);
+    &#125;
+
+    // 关闭SNMP会话
+    snmp_sess_close(snmp_sess_pointer);
+
+    // 清理SNMP库
+    snmp_shutdown(&quot;snmp_app&quot;);
+
+    return 0;
+&#125;
+</code></pre>
+<ol>
+<li>初始化SNMP库：调用<code>init_snmp()</code>函数初始化SNMP库（在程序中，传入<code>&quot;snmp_app&quot;</code>作为库名）。</li>
+<li>初始化会话：调用<code>snmp_sess_init()</code>函数初始化SNMP会话。</li>
+<li>开启SNMP会话：调用<code>snmp_sess_open()</code>函数建立到SNMP代理程序的连接，并返回一个指向SNMP会话的指针，若返回NULL则连接失败。</li>
+<li>准备发送PDU：使用<code>snmp_pdu_create()</code>函数创建一个待发送的PDU（本示例中创建的是一个SNMP GET请求的PDU），然后使用<code>read_objid()</code>函数解析OID字符串，并调用<code>snmp_add_null_var()</code>函数向PDU添加待查询的OID。</li>
+<li>发送SNMP请求并获取响应：使用<code>snmp_synch_response()</code>函数向SNMP代理程序发送请求，并获取响应。</li>
+<li>打印接收到的响应结果：使用<code>print_variable()</code>函数打印接收到的SNMP变量值。</li>
+<li>关闭SNMP会话：调用<code>snmp_sess_close()</code>函数关闭到SNMP代理程序的连接。</li>
+<li>清理SNMP库：调用<code>snmp_shutdown()</code>函数清理SNMP库，释放相关资源。</li>
+</ol>
+
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#net-snmp%E5%AD%A6%E4%B9%A0"><span class="space-toc-text">net-snmp学习</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/Xw-oorik/xw-oorik.github.io">Pot ba</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/Xw-oorik/xw-oorik.github.io" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:820735157@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://blog.csdn.net/weixin_51609435?spm=1000.2115.3001.5343" target="_blank">
+                <i class="ri-pages-fill"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
+
+<link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js"> </script>
+
+<script src="/js/fancybox.js"></script>
+
