@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Cplusplus总结 |    Oorik.</title>
+  <title>  Cplusplus部分总结 |    Oorik.</title>
   <meta name="description" content="A minimalist theme for hexo.">
   <!-- 标签页图标 -->
   
@@ -129,7 +129,7 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">Cplusplus总结</div>
+      <div class="post-title animate__animated  animate__fadeInUp">Cplusplus部分总结</div>
       <div class="meta-intro animate__animated  animate__fadeInUp">May 22 2023</div>
       
     </div>
@@ -155,13 +155,12 @@ crr[i]=(int*)malloc(sizeof(int)*3);//具体每行的3个元素
 <p>this-&gt;  classname *const this</p>
 <p>const成员函数中  const classname *const this ，这说明不能对 <code>this</code> 指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）；</p>
 <p>this是右值，所以不能取this的地址</p>
-
+<p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:\Users\oorik\AppData\Roaming\Typora\typora-user-images\image-20230513202648323.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230513202648323.png" >
         </sapn>
-      
-
+      </p>
 <p>在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数</p>
 <hr>
 <p>虚函数可以是内联函数吗？</p>
@@ -321,7 +320,7 @@ public:
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="https://img-blog.csdn.net/20170606225745017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19iYXNlX2ppbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531002904717.png" >
         </sapn>
       </p>
 <hr>
@@ -406,19 +405,19 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="/../images/cplus/image-20230524002853063.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531002958912.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="/../images/cplus/image-20230524004005762.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003021722.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="/../images/cplus/image-20230524201016922.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003051824.png" >
         </sapn>
       </p>
 <pre><code class="c++">class A
@@ -537,7 +536,7 @@ private:    //改为私有的了
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="/../images/cplus/image-20230524224319813.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003112537.png" >
         </sapn>
       </p>
 <p>不过我说的这个问题是在windows下vs会这样，，但是linux下g++这种情况，他会自动的给你偏移到起始位置去free的，所以linux下g++这样没问题</p>
@@ -550,7 +549,7 @@ private:    //改为私有的了
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="/../images/cplus/image-20230524234949473.png" >
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003151992.png" >
         </sapn>
       </p>
 <p><strong>以Linux+x86为例</strong> 操作系统（内核）的代码运行在最高运行级别RING0上，可以使用特权指令，控制中断、修改页表、访问设备等。 应用程序的代码运行在最低运行级别上RING3上，不能做受控操作。如果要做，例如访问磁盘，写文件的操作，则必须通过<strong>系统调用</strong>（函数），执行系统调用的时候，CPU的运行级别会从RING3切换到RING0，并跳转到系统调用对应的内核代码位置执行，这样内核就替我们完成了设备访问的操作，完成之后再从RING0返回RING3。整个过程也称<strong>作用户态和内核态的切换</strong></p>
@@ -601,20 +600,9 @@ private:    //改为私有的了
             
             
               
-                <li class="me base">
-                  <a  href="/2023/05/22/cplus/" class="post-categoris-bottom-link">
-                  Cplusplus总结
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
                 <li class="base">
                   <a  href="/2023/05/22/auto1/" class="post-categoris-bottom-link">
-                  auto进阶
+                  auto关键字进阶
                 </a>
                 </li>
               
@@ -626,6 +614,17 @@ private:    //改为私有的了
                 <li class="base">
                   <a  href="/2023/05/22/cpp%E6%A8%A1%E6%9D%BF1/" class="post-categoris-bottom-link">
                   Cpp模板细讲
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2023/05/22/cplus/" class="post-categoris-bottom-link">
+                  Cplusplus部分总结
                 </a>
                 </li>
               
