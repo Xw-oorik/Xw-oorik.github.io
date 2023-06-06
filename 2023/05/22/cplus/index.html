@@ -140,7 +140,8 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h3 id="记录我下班重温cpp的一些笔记。"><a href="#记录我下班重温cpp的一些笔记。" class="headerlink" title="记录我下班重温cpp的一些笔记。"></a>记录我下班重温cpp的一些笔记。</h3><pre><code class="c">new 重载 运算符 返回具体类型 抛异常 不用指定内存大小 多构造对象的过程
+        <h3 id="记录我下班重温cpp的一些笔记。"><a href="#记录我下班重温cpp的一些笔记。" class="headerlink" title="记录我下班重温cpp的一些笔记。"></a>记录我下班重温cpp的一些笔记。</h3><p>[TOC]</p>
+<pre><code class="c">new 重载 运算符 返回具体类型 抛异常 不用指定内存大小 多构造对象的过程
 malloc 指定内存大小 void* 返回null 
 二维数组分配内存
 int(*arr)[5]=new int[4][5];//直接全分配好
@@ -158,7 +159,7 @@ crr[i]=(int*)malloc(sizeof(int)*3);//具体每行的3个元素
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230513202648323.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230513202648323.png" >
         </sapn>
       </p>
 <p>在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数</p>
@@ -320,7 +321,7 @@ public:
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531002904717.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531002904717.png" >
         </sapn>
       </p>
 <hr>
@@ -405,19 +406,19 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531002958912.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531002958912.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003021722.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531003021722.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003051824.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531003051824.png" >
         </sapn>
       </p>
 <pre><code class="c++">class A
@@ -536,7 +537,7 @@ private:    //改为私有的了
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003112537.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531003112537.png" >
         </sapn>
       </p>
 <p>不过我说的这个问题是在windows下vs会这样，，但是linux下g++这种情况，他会自动的给你偏移到起始位置去free的，所以linux下g++这样没问题</p>
@@ -549,7 +550,7 @@ private:    //改为私有的了
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531003151992.png" >
+           data-src="F:\PotBa\source\images\cplus\image-20230531003151992.png" >
         </sapn>
       </p>
 <p><strong>以Linux+x86为例</strong> 操作系统（内核）的代码运行在最高运行级别RING0上，可以使用特权指令，控制中断、修改页表、访问设备等。 应用程序的代码运行在最低运行级别上RING3上，不能做受控操作。如果要做，例如访问磁盘，写文件的操作，则必须通过<strong>系统调用</strong>（函数），执行系统调用的时候，CPU的运行级别会从RING3切换到RING0，并跳转到系统调用对应的内核代码位置执行，这样内核就替我们完成了设备访问的操作，完成之后再从RING0返回RING3。整个过程也称<strong>作用户态和内核态的切换</strong></p>
@@ -600,17 +601,6 @@ private:    //改为私有的了
             
             
               
-                <li class="base">
-                  <a  href="/2023/05/22/auto1/" class="post-categoris-bottom-link">
-                  auto关键字进阶
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
                 <li class="me base">
                   <a  href="/2023/05/22/cplus/" class="post-categoris-bottom-link">
                   Cplusplus部分总结
@@ -622,6 +612,13 @@ private:    //改为私有的了
             
             
               
+                <li class="base">
+                  <a  href="/2023/05/22/auto1/" class="post-categoris-bottom-link">
+                  auto关键字进阶
+                </a>
+                </li>
+              
+              
             
             
             
@@ -632,6 +629,10 @@ private:    //改为私有的了
                 </a>
                 </li>
               
+              
+            
+            
+            
               
             
             
