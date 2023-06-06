@@ -63,7 +63,7 @@
           <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
              CATEGORIES
              <div class="categories-outer " id="sort-div">
-               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%BF%9B%E9%98%B6/">Cpp进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C%E8%BF%9B%E9%98%B6/">C进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tips/">Tips</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></li></ul>
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%BF%9B%E9%98%B6/">Cpp进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C%E8%BF%9B%E9%98%B6/">C进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tips/">Tips</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></li></ul>
              </div>
           </li>
         
@@ -140,7 +140,8 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h1 id="练气期"><a href="#练气期" class="headerlink" title="练气期"></a>练气期</h1><p>os就是操作系统，，linux，windows</p>
+        <p>[TOC]</p>
+<h1 id="练气期"><a href="#练气期" class="headerlink" title="练气期"></a>练气期</h1><p>os就是操作系统，，linux，windows</p>
 <h3 id="文件io标准库函数和系统调用关系"><a href="#文件io标准库函数和系统调用关系" class="headerlink" title="文件io标准库函数和系统调用关系"></a>文件io标准库函数和系统调用关系</h3><p>fopen c的库函数，open系统调用，用fopen，就是fopen(3)库函数，用fopen底层会调open系统调用，调的open其实就是open(2)</p>
 <p>man帮助的顺序</p>
 <p>标准库函数都是在用户空间调用的</p>
@@ -149,7 +150,7 @@
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531004721672.png" >
+           data-src="/../images/C-linux/image-20230531004721672.png" >
         </sapn>
       </p>
 <hr>
@@ -167,7 +168,7 @@
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531004828050.png" >
+           data-src="/../images/C-linux/image-20230531004828050.png" >
         </sapn>
       </p>
 <p>缓冲区就好像菜鸟驿站一样，存到一定量了或者触发某些条件了才去发快递，在驿站收快递同理</p>
@@ -179,13 +180,13 @@
 <h3 id="open"><a href="#open" class="headerlink" title="open"></a><strong>open</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531004901750.png" >
+           data-src="/../images/C-linux/image-20230531004901750.png" >
         </sapn>
       </p>
 <h3 id="close"><a href="#close" class="headerlink" title="close"></a><strong>close</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531004938213.png" >
+           data-src="/../images/C-linux/image-20230531004938213.png" >
         </sapn>
       </p>
 <p>比如打开三个文件abc，先打开a 打开b，然后关闭a ，再打开c ，最后关闭b，关闭c</p>
@@ -193,7 +194,7 @@
 <h3 id="read"><a href="#read" class="headerlink" title="read"></a><strong>read</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005023371.png" >
+           data-src="/../images/C-linux/image-20230531005023371.png" >
         </sapn>
       </p>
 <p>read读的就是内核里面真正的文件位置，c标准库调的读返回的是那个缓冲区buff的位置,如果读到文件尾就提前返回了，即使没有读够count个字节；从终端设备读，是以行读的，遇到换行就读完退出</p>
@@ -235,7 +236,7 @@ argv    0   1
 <h3 id="非阻塞的读写"><a href="#非阻塞的读写" class="headerlink" title="非阻塞的读写"></a><strong>非阻塞的读写</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005050125.png" >
+           data-src="/../images/C-linux/image-20230531005050125.png" >
         </sapn>
       </p>
 <h3 id="fcntl"><a href="#fcntl" class="headerlink" title="fcntl"></a><strong>fcntl</strong></h3><p>用来改变一个已打开的文件的属性，而不必重新open文件，可以设置读写，追加，非阻塞等标志,也能去给文件上锁，上了之后就是说这个文件这一段时间只能我这个进程去用。</p>
@@ -272,14 +273,14 @@ int main()
 <h3 id="mmap内存映射"><a href="#mmap内存映射" class="headerlink" title="mmap内存映射"></a><strong>mmap内存映射</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005115279.png" >
+           data-src="/../images/C-linux/image-20230531005115279.png" >
         </sapn>
       </p>
 <p>addr如果为空，内核会自己在进程地址空间选择合适的地址建立映射，我们可以给addr一个地址，这个地址只不过是建议的，内核会从给的这个地址开始往上找合适的位置，真正的映射的首地址可以通过mmap返回值拿到</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005143307.png" >
+           data-src="/../images/C-linux/image-20230531005143307.png" >
         </sapn>
       </p>
 <p>linux 可以用 -txl -tc 文件，查看文件里面每个字符的ASCII值的16进制</p>
@@ -322,53 +323,53 @@ int main(int argc,int *argv[])
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005224156.png" >
+           data-src="/../images/C-linux/image-20230531005224156.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005309692.png" >
+           data-src="/../images/C-linux/image-20230531005309692.png" >
         </sapn>
       </p>
 <p><strong>inode表要理解，，很重要. 一个文件除了数据之外的别的标识都在存在inode表里面。inode就是对整个文件的管理信息表</strong> ，，注意每个文件的文件名没有存在自己的inode或者数据块中，，而是存在此文件当前的上级目录中，目录中数据块会存当前目录下的文件夹，文件的名字</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005334099.png" >
+           data-src="/../images/C-linux/image-20230531005334099.png" >
         </sapn>
       </p>
 <h3 id="stat"><a href="#stat" class="headerlink" title="stat"></a><strong>stat</strong></h3><p>stat系统调用或者liunx封装的stat命令，可以查当前文件的状态,inode，blocks,大小，链接数，权限等</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005409584.png" >
+           data-src="/../images/C-linux/image-20230531005409584.png" >
         </sapn>
       </p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a><strong>链接</strong></h3><p>软链接就是真的重新创建了一个文件，类似windows的快捷方式，，硬链接只是给文件起了别名，给硬链接数+1了，</p>
 <h3 id="遍历目录数据块的记录"><a href="#遍历目录数据块的记录" class="headerlink" title="遍历目录数据块的记录"></a><strong>遍历目录数据块的记录</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005442301.png" >
+           data-src="/../images/C-linux/image-20230531005442301.png" >
         </sapn>
       </p>
 <h3 id="VFS虚拟文件系统"><a href="#VFS虚拟文件系统" class="headerlink" title="VFS虚拟文件系统"></a><strong>VFS虚拟文件系统</strong></h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005501741.png" >
+           data-src="/../images/C-linux/image-20230531005501741.png" >
         </sapn>
       </p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005534365.png" >
+           data-src="/../images/C-linux/image-20230531005534365.png" >
         </sapn>
       </p>
 <h3 id="dup和dup2做重定向"><a href="#dup和dup2做重定向" class="headerlink" title="dup和dup2做重定向"></a><strong>dup和dup2</strong>做重定向</h3><p>oldfd去覆盖newfd，执行完该命令后，newfd如果在使用，就关闭，完了newfd就指向oldfd指向的那个文件</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005637653.png" >
+           data-src="/../images/C-linux/image-20230531005637653.png" >
         </sapn>
       </p>
 <pre><code class="c">&#39;&#39;&#39;头文件&#39;&#39;&#39;
@@ -397,7 +398,7 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005703843.png" >
+           data-src="/../images/C-linux/image-20230531005703843.png" >
         </sapn>
       </p>
 <h1 id="神通期"><a href="#神通期" class="headerlink" title="神通期"></a>神通期</h1><h4 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h4><p>复制进程，，调用失败返回-1</p>
@@ -410,7 +411,7 @@ pid_t fork(void)
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005729329.png" >
+           data-src="/../images/C-linux/image-20230531005729329.png" >
         </sapn>
       </p>
 <p>fork之后就会进到内核态，子进程复制出来之后，切回用户态，此时父进程和子进程两个此时都是处于就绪状态，所以不加控制的话，他们的运行顺序是由cpu去调度</p>
@@ -425,7 +426,7 @@ set follow-fork-mode child
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005748066.png" >
+           data-src="/../images/C-linux/image-20230531005748066.png" >
         </sapn>
       </p>
 <p>试试这个demo代码：</p>
@@ -449,7 +450,7 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005813376.png" >
+           data-src="/../images/C-linux/image-20230531005813376.png" >
         </sapn>
       </p>
 <h4 id="wait，waitpid"><a href="#wait，waitpid" class="headerlink" title="wait，waitpid"></a>wait，waitpid</h4><p>一个进程终止是会关闭所有的文件描述符，释放在用户空间分配的内存，但他的pcb还保存的，内核在pcb中还保存一些信息，如果是正常终止则保存着退出状态，是异常退出则保存着导致该进程终止的信号是哪个</p>
@@ -459,20 +460,20 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005830775.png" >
+           data-src="/../images/C-linux/image-20230531005830775.png" >
         </sapn>
       </p>
 <h3 id="进程间通信-IPC"><a href="#进程间通信-IPC" class="headerlink" title="进程间通信 IPC"></a>进程间通信 IPC</h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005845507.png" >
+           data-src="/../images/C-linux/image-20230531005845507.png" >
         </sapn>
       </p>
 <h4 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h4><p>pipe，，信息一个时刻只能单向流通，父子进程用，fd[0]读端，fd[1]写端</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005901177.png" >
+           data-src="/../images/C-linux/image-20230531005901177.png" >
         </sapn>
       </p>
 <pre><code class="c">#include&lt;stdio.h&gt;
@@ -531,21 +532,21 @@ int pclose(FILE*stream)
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531005919050.png" >
+           data-src="/../images/C-linux/image-20230531005919050.png" >
         </sapn>
       </p>
 <h4 id="共享内存，最快的ipc"><a href="#共享内存，最快的ipc" class="headerlink" title="共享内存，最快的ipc"></a>共享内存，最快的ipc</h4><p>通过ftok把内核中共享内存那块结构key获取，然后用shmget把key传进去，拿到这块共享内存id，通过shmat把共享内存和用户空间进行映射，后面用户通过映射的地址进行操作</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531010004630.png" >
+           data-src="/../images/C-linux/image-20230531010004630.png" >
         </sapn>
       </p>
 <h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h4><p>整体流程</p>
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531010018920.png" >
+           data-src="/../images/C-linux/image-20230531010018920.png" >
         </sapn>
       </p>
 <h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p>kill -l  可以列出系统支持的信号</p>
@@ -575,7 +576,7 @@ int pclose(FILE*stream)
 <h3 id="阻塞信号"><a href="#阻塞信号" class="headerlink" title="阻塞信号"></a>阻塞信号</h3><p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531010041472.png" >
+           data-src="/../images/C-linux/image-20230531010041472.png" >
         </sapn>
       </p>
 <p>如果在进程解除对某个信号的阻塞之前这种信号产生过多次，怎么处理的？</p>
@@ -683,7 +684,7 @@ int main()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230531010136501.png" >
+           data-src="/../images/C-linux/image-20230531010136501.png" >
         </sapn>
       </p>
 <h4 id="pause函数可以使调用进程挂起，直到信号到达"><a href="#pause函数可以使调用进程挂起，直到信号到达" class="headerlink" title="pause函数可以使调用进程挂起，直到信号到达"></a>pause函数可以使调用进程挂起，直到信号到达</h4><p>sigsuspend函数包含了pause的挂起等待功能，同时解决了时序竞争的问题，在对时序有严格要求的场合要用sigsupend</p>
@@ -745,6 +746,10 @@ int main()
                 </a>
                 </li>
               
+              
+            
+            
+            
               
             
             
