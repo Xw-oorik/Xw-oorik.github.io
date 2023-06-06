@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  QTimer 定时器，窗口界面操作 |    Oorik.</title>
+  <title>  QTimer定时器，窗口界面操作 |    Oorik.</title>
   <meta name="description" content="A minimalist theme for hexo.">
   <!-- 标签页图标 -->
   
@@ -129,7 +129,7 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">QTimer 定时器，窗口界面操作</div>
+      <div class="post-title animate__animated  animate__fadeInUp">QTimer定时器，窗口界面操作</div>
       <div class="meta-intro animate__animated  animate__fadeInUp">Jun 03 2023</div>
       
     </div>
@@ -140,8 +140,7 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h2 id="QTimer-定时器，窗口界面操作"><a href="#QTimer-定时器，窗口界面操作" class="headerlink" title="QTimer 定时器，窗口界面操作"></a>QTimer 定时器，窗口界面操作</h2><p>[TOC]</p>
-<p><strong>本系列为跟随大丙老师博客学习笔记</strong></p>
+        <h2 id="QTimer-定时器，窗口界面操作"><a href="#QTimer-定时器，窗口界面操作" class="headerlink" title="QTimer 定时器，窗口界面操作"></a>QTimer 定时器，窗口界面操作</h2><p><strong>本系列为跟随大丙老师博客学习笔记</strong></p>
 <h3 id="QTimer-定时器"><a href="#QTimer-定时器" class="headerlink" title="QTimer 定时器"></a>QTimer 定时器</h3><blockquote>
 <pre><code class="cpp">// 构造函数
 // 如果指定了父对象, 创建的堆内存可以自动析构
@@ -179,7 +178,12 @@ bool QTimer::isSingleShot() const;
 void QTimer::setSingleShot(bool singleShot);
 </code></pre>
 </blockquote>
-<p>![image-20230605205140768](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605205140768.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605205140768.png" >
+        </sapn>
+      </p>
 <p>mianwindow.cpp</p>
 <pre><code class="cpp">#include&lt;QTime&gt;
 #include&lt;QTimer&gt;
@@ -221,10 +225,20 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(&quot;hello hexo&quot;);//标题
     setWindowIcon(QIcon(&quot;F:\\PotBa\\public\\favicon2.ico&quot;));//图标
 </code></pre>
-<p>![image-20230605213102594](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605213102594.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605213102594.png" >
+        </sapn>
+      </p>
 <p>ui空间快速写槽函数</p>
 <p>鼠标右键点击 转到槽</p>
-<p>![image-20230605213514978](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605213514978.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605213514978.png" >
+        </sapn>
+      </p>
 <p>选择要发出的信号，确定，他会自动给你生成一个槽函数</p>
 <pre><code class="cpp">void MainWindow::on_yd_clicked()
 &#123;
@@ -264,7 +278,12 @@ void MainWindow::on_yd2_clicked()
     setGeometry(x,y,width,height);
 &#125;
 </code></pre>
-<p>![image-20230605215200211](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605215200211.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605215200211.png" >
+        </sapn>
+      </p>
 <pre><code class="c">我移动了几次
     
 左上角： QPoint(939,238) 右上角： QPoint(1890,238) 左下角： QPoint(939,966) 右下角： QPoint(1890,966) 宽度： 952 高度： 729
@@ -278,7 +297,12 @@ void MainWindow::on_yd2_clicked()
     this-&gt;setWindowTitle(&quot;新标题&quot;);
 &#125;
 </code></pre>
-<p>![image-20230605220043779](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605220043779.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605220043779.png" >
+        </sapn>
+      </p>
 <p>在mainwindow构造函数添加个connect响应的打印信息，当按钮被按下，信号发出，槽函数接收到信号做替换标题和图标的处理，当图标&#x2F;标题被修改了，发出俩信号windowTitleChanged和windowIconChanged，我们去写个匿名的槽函数去接收这俩信号然后做个打印</p>
 <pre><code class="cpp">
         connect(this,&amp;MainWindow::windowTitleChanged,this,[=](const QString &amp;title )
@@ -303,7 +327,12 @@ void MainWindow::on_yd2_clicked()
         
     &#125;);
 </code></pre>
-<p>![image-20230605222153208](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605222153208.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605222153208.png" >
+        </sapn>
+      </p>
 <p>上面的一些操作都是QWidget这个父类的，虽然用的mainwindow，但是是mainwindow继承QWidget他这个类的，所以操作api也是能用的，所以上面的示例api都是QWidget本身的</p>
 <p>对于三个窗口关系，可以去看我Qt第一讲 -&gt;移步主页csdn链接</p>
 <p>下面说QDialog一些操作，他特有操作对于QWidget肯定就用不了了，父子继承明白吧</p>
@@ -359,8 +388,18 @@ void MyDialog::on_do_2_clicked()
     &#125;
 &#125;
 </code></pre>
-<p>![image-20230605224505474](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605224505474.png)</p>
-<p>![image-20230605224527353](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605224527353.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605224505474.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605224527353.png" >
+        </sapn>
+      </p>
 <p>对于dialog的模态非模态，模态就是当前窗口点开了，就不能操作别的窗口了，点击别的地方会发出那种声响你懂吧，非模态就是随便操作咯</p>
 <p>我们加个打印去接收一下这三个信号，看看返回值</p>
 <p>修改一下槽函数，看下打印：</p>
@@ -391,7 +430,12 @@ void MyDialog::on_do_2_clicked()
 <p>我三个按钮都点了一下，效果如下，accept果然返回的是1，reject返回0，done返回我们自定义</p>
 <p>finished就是去对应发出三个的信号，且能接收参数的</p>
 <p>而accepted和rejected只是对应accept和reject的，且不带参数</p>
-<p>![image-20230605230055771](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230605230055771.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230605230055771.png" >
+        </sapn>
+      </p>
 <h3 id="看QDialog子类"><a href="#看QDialog子类" class="headerlink" title="看QDialog子类"></a>看QDialog子类</h3><h4 id="QMessageBox-消息提示框"><a href="#QMessageBox-消息提示框" class="headerlink" title="QMessageBox 消息提示框"></a>QMessageBox 消息提示框</h4><p>在mainwindow加一个控件，实现对应槽函数，应用QMessageBox 类的api，就有如下效果</p>
 <pre><code class="cpp">void MainWindow::on_msgbox_clicked()
 &#123;
@@ -411,9 +455,24 @@ void MyDialog::on_do_2_clicked()
 
 &#125;
 </code></pre>
-<p>![image-20230606000430414](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606000430414.png)</p>
-<p>![image-20230606000436448](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606000436448.png)</p>
-<p>![image-20230606000449122](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606000449122.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606000430414.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606000436448.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606000449122.png" >
+        </sapn>
+      </p>
 <h4 id="QFileDialog"><a href="#QFileDialog" class="headerlink" title="QFileDialog"></a>QFileDialog</h4><p>QFileDialog 对话框类是 QDialog 类的子类，<strong>通过这个类可以选择要打开 &#x2F; 保存的文件或者目录</strong>。关于这个类我们只需要掌握一些静态方法的使用就可以了。</p>
 <p>添加新功能： &#x2F;&#x2F;打开多个文件  &#x2F;&#x2F;打开保存文件对话框</p>
 <p>当然这里实现保存文件，肯定是没有未保存的，这里只是做gui的演示，具体文件操作就需要open，write那些c++&#x2F;c的api去操作文件了，就是后端逻辑</p>
@@ -441,10 +500,24 @@ void MyDialog::on_do_2_clicked()
 
 &#125;
 </code></pre>
-<p>![image-20230606202621889](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606202621889.png)</p>
-<p>![image-20230606202706824](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606202706824.png)</p>
-<p>![image-20230606202714382](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606202714382.png)</p>
-<p>并没有替换成功，只是界面展示这样</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606202621889.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606202706824.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606202714382.png" >
+        </sapn>
+      并没有替换成功，只是界面展示这样</p>
 <h4 id="QFontDialog"><a href="#QFontDialog" class="headerlink" title="QFontDialog"></a>QFontDialog</h4><p>根据这个对话框类，拿到一个设置字体的对话框（字体，大小，等等）</p>
 <p>我们只需要调用这个类的静态成员函数就可以得到想要的窗口了。</p>
 <p><strong>关于设置字体属性的我们需要借助QFont这个类</strong></p>
@@ -511,10 +584,25 @@ void QWidget::setFont(const QFont &amp;);
 </code></pre>
 <p><strong>添加新功能：</strong></p>
 <p>我们点击设置字体，选择完成后，更改下方标签hello word！！！字体，并且改变所有窗口的字体设置</p>
-<p>![image-20230606204515765](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606204515765.png)</p>
-<p>![image-20230606205300941](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606205300941.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606204515765.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606205300941.png" >
+        </sapn>
+      </p>
 <p>设置，标签测试+整个窗口字体</p>
-<p>![image-20230606205437956](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606205437956.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606205437956.png" >
+        </sapn>
+      </p>
 <pre><code class="cpp">void MainWindow::on_font_clicked()
 &#123;
     bool ok;
@@ -549,11 +637,26 @@ void QWidget::setFont(const QFont &amp;);
 <p>然后，根据用户选择的颜色创建一个<code>QBrush</code>对象<code>brush</code>，并创建一个与<code>colorshow</code>窗口部件大小相同的矩形区域<code>rect</code>，用于在后续的绘图操作中指定绘图区域。接着，创建一个<code>QPixmap</code>对象<code>pix</code>，表示一个像素图，大小与<code>rect</code>相同。</p>
 <p>使用<code>QPainter</code>对象<code>p</code>在<code>pix</code>上进行绘图操作，使用<code>fillRect</code>函数在<code>rect</code>矩形区域内填充颜色，颜色由<code>brush</code>指定。最后，使用<code>ui-&gt;colorshow-&gt;setPixmap(pix)</code>将绘制好的<code>pix</code>像素图设置为<code>colorshow</code>窗口部件的显示内容，从而实现在<code>colorshow</code>窗口部件上填充用户选择的颜色的效果。</p>
 <p>最后，使用<code>QString</code>类的<code>arg</code>函数将颜色的RGB值和透明度格式化成一个字符串，并将其设置为<code>colorpt</code>标签的文本内容，从而在<code>colorpt</code>标签上显示用户选择的颜色的RGB值和透明度。</p>
-<p>![image-20230606211930864](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606211930864.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606211930864.png" >
+        </sapn>
+      </p>
 <p><strong>点击设置颜色</strong></p>
-<p>![image-20230606211950340](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606211950340.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606211950340.png" >
+        </sapn>
+      </p>
 <p><strong>设置完成</strong></p>
-<p>![image-20230606212021843](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606212021843.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606212021843.png" >
+        </sapn>
+      </p>
 <h4 id="QInputDialog"><a href="#QInputDialog" class="headerlink" title="QInputDialog"></a>QInputDialog</h4><p>这是一个输入对话框窗口</p>
 <pre><code class="cpp">// 得到一个可以输入浮点数的对话框窗口, 返回对话框窗口中输入的浮点数
 /*
@@ -687,10 +790,30 @@ void MainWindow::on_chat_clicked()
 #endif
 &#125;
 </code></pre>
-<p>![image-20230606214646189](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606214646189.png)</p>
-<p>![image-20230606215321602](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606215321602.png)</p>
-<p>![image-20230606215615293](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606215615293.png)</p>
-<p>![image-20230606220104563](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606220104563.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606214646189.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606215321602.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606215615293.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606220104563.png" >
+        </sapn>
+      </p>
 <h4 id="QProgressDialog"><a href="#QProgressDialog" class="headerlink" title="QProgressDialog"></a>QProgressDialog</h4><p>进度条对话框窗口类</p>
 <p>新添功能：实现一个模拟下载的进度框，为模态的窗口，当取消下载后，当前窗口关闭，对象析构，而不需要等着父对象析构他再析构</p>
 <pre><code class="cpp">void MainWindow::on_download_clicked()
@@ -730,7 +853,12 @@ void MainWindow::on_chat_clicked()
         timer-&gt;start(50);//50毫秒更新一次
 &#125;
 </code></pre>
-<p>![image-20230606224819514](..&#x2F;images&#x2F;QTimer 定时器，窗口界面操作&#x2F;image-20230606224819514.png)</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="F:\PotBa\source\images\Qt-window\image-20230606224819514.png" >
+        </sapn>
+      </p>
 
         <!-- 分类文章 -->
         
@@ -792,9 +920,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="me base">
-                  <a  href="/2023/06/03/QTimer%20%E5%AE%9A%E6%97%B6%E5%99%A8%EF%BC%8C%E7%AA%97%E5%8F%A3%E7%95%8C%E9%9D%A2%E6%93%8D%E4%BD%9C/" class="post-categoris-bottom-link">
-                  QTimer 定时器，窗口界面操作
+                <li class="base">
+                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
+                  Qt信号槽
                 </a>
                 </li>
               
@@ -803,9 +931,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="base">
-                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
-                  Qt信号槽
+                <li class="me base">
+                  <a  href="/2023/06/03/Qt-window/" class="post-categoris-bottom-link">
+                  QTimer定时器，窗口界面操作
                 </a>
                 </li>
               
