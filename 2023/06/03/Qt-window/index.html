@@ -860,6 +860,106 @@ void MainWindow::on_chat_clicked()
            data-src="/../images/Qt-window/image-20230606224819514.png" >
         </sapn>
       </p>
+<h3 id="QMainWindow"><a href="#QMainWindow" class="headerlink" title="QMainWindow"></a>QMainWindow</h3><p><strong>QMainWindow 是标准基础窗口中结构最复杂的窗口，其组成如下:</strong></p>
+<ol>
+<li>提供了菜单栏 , 工具栏 , 状态栏 , 停靠窗口</li>
+<li>菜单栏：只能有一个，位于窗口的最上方</li>
+<li>工具栏：可以有多个，默认提供了一个，窗口的上下左右都可以停靠</li>
+<li>状态栏：只能有一个，位于窗口最下方</li>
+<li>停靠窗口：可以有多个，默认没有提供，窗口的上下左右都可以停靠</li>
+</ol>
+<h4 id="演示菜单栏"><a href="#演示菜单栏" class="headerlink" title="演示菜单栏"></a>演示菜单栏</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607210745882.png" >
+        </sapn>
+      </p>
+<p>菜单项默认不能输入中文，想要输入中文需要新建菜单栏</p>
+<p>点击名称上面那个单文件式按钮</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607210947537.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607211241338.png" >
+        </sapn>
+      </p>
+<p>拖动到菜单栏，这个菜单项就会自动添加</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230607211307289.png" >
+        </sapn>
+      </p>
+<p>在mainwindow构造函数添加对应槽函数,与连接</p>
+<pre><code class="cpp">    //相映菜单项点击后信号
+    connect(ui-&gt;openaction,&amp;QAction::triggered,this,[=]()&#123;
+        QMessageBox::information(this,&quot;clicked&quot;,&quot;新建成功&quot;);
+    &#125;);
+    connect(ui-&gt;actionopen,&amp;QAction::triggered,this,[=]()&#123;
+        QMessageBox::information(this,&quot;clicked&quot;,&quot;打开成功&quot;);
+    &#125;);
+    connect(ui-&gt;actionclose,&amp;QAction::triggered,this,[=]()&#123;
+        QMessageBox::information(this,&quot;clicked&quot;,&quot;关闭成功&quot;);
+    &#125;);
+</code></pre>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607211843966.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607211852257.png" >
+        </sapn>
+      </p>
+<h4 id="演示工具栏"><a href="#演示工具栏" class="headerlink" title="演示工具栏"></a>演示工具栏</h4><p>添加工具栏，tooBar</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607212218674.png" >
+        </sapn>
+      </p>
+<p>给工具栏里面添加控件，我们可以直接在ui界面里面创建，然后跟上面一样拖上去就行</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607212637980.png" >
+        </sapn>
+      </p>
+<p>也可以使用代码去添加控件</p>
+<p>给mainwindow构造函数中添加</p>
+<pre><code class="cpp">    //给工具栏添加按钮和单行输入框
+    ui-&gt;toolBar-&gt;addWidget(new QPushButton(&quot;搜索&quot;));
+    ui-&gt;toolBar-&gt;addWidget(new QLineEdit);
+</code></pre>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607212911747.png" >
+        </sapn>
+      </p>
+<p>对于工具栏，我们可以在ui界面找到工具栏对象，可以做一些设置</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607213630032.png" >
+        </sapn>
+      </p>
+<p>比如movable打钩，这个工具栏就能随意拖动停靠</p>
+<p>效果如下：</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230607213825946.png" >
+        </sapn>
+      </p>
 
         <!-- 分类文章 -->
         
@@ -921,9 +1021,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="base">
-                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
-                  Qt信号槽
+                <li class="me base">
+                  <a  href="/2023/06/03/Qt-window/" class="post-categoris-bottom-link">
+                  QTimer定时器,窗口界面操作
                 </a>
                 </li>
               
@@ -932,9 +1032,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="me base">
-                  <a  href="/2023/06/03/Qt-window/" class="post-categoris-bottom-link">
-                  QTimer定时器,窗口界面操作
+                <li class="base">
+                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
+                  Qt信号槽
                 </a>
                 </li>
               
