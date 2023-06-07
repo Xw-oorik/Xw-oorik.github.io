@@ -957,7 +957,38 @@ void MainWindow::on_chat_clicked()
 <p>
         <span class="lazyload-img-span">
         <img   
-           data-src="C:/Users/oorik/AppData/Roaming/Typora/typora-user-images/image-20230607213825946.png" >
+           data-src="/../images/Qt-window/image-20230607213825946.png" >
+        </sapn>
+      </p>
+<p><strong>通过代码去添加工具栏</strong></p>
+<p>在mainwindow构造函数中添加</p>
+<pre><code class="cpp">    //添加新的一个工具栏
+    QToolBar* toolbar=new QToolBar(&quot;toolbar2&quot;);
+    this-&gt;addToolBar(Qt::LeftToolBarArea,toolbar);
+</code></pre>
+<h4 id="演示状态栏"><a href="#演示状态栏" class="headerlink" title="演示状态栏"></a>演示状态栏</h4><p>状态栏只能有一个，QStatusBar</p>
+<p>给状态栏添加一些控件</p>
+<pre><code class="cpp">    //给状态栏添加控件
+    ui-&gt;statusbar-&gt;showMessage(&quot;我是状态栏.&quot;,4000); //显示4秒，自动清除
+    QPushButton* button=new QPushButton(&quot;当前行&quot;);
+    ui-&gt;statusbar-&gt;addWidget(button);
+    QLabel *label=new QLabel(&quot;1&quot;);
+    ui-&gt;statusbar-&gt;addWidget(label);
+    QTimer::singleShot(5000,this,[=]()&#123;
+        button-&gt;show();
+        label-&gt;show();  //显示出来,showMessage清除后，被覆盖的控件是不会显示的，要手动调用显示
+    &#125;);
+</code></pre>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607230027766.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607230038578.png" >
         </sapn>
       </p>
 
@@ -1021,9 +1052,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="me base">
-                  <a  href="/2023/06/03/Qt-window/" class="post-categoris-bottom-link">
-                  QTimer定时器,窗口界面操作
+                <li class="base">
+                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
+                  Qt信号槽
                 </a>
                 </li>
               
@@ -1032,9 +1063,9 @@ void MainWindow::on_chat_clicked()
             
             
               
-                <li class="base">
-                  <a  href="/2023/06/03/QT%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="post-categoris-bottom-link">
-                  Qt信号槽
+                <li class="me base">
+                  <a  href="/2023/06/03/Qt-window/" class="post-categoris-bottom-link">
+                  QTimer定时器,窗口界面操作
                 </a>
                 </li>
               
