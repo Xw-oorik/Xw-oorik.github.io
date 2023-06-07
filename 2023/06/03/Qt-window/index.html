@@ -141,6 +141,7 @@
         <!-- top型目录 -->
         
         <h2 id="QTimer定时器，窗口界面操作"><a href="#QTimer定时器，窗口界面操作" class="headerlink" title="QTimer定时器，窗口界面操作"></a>QTimer定时器，窗口界面操作</h2><p><strong>本系列为跟随大丙老师博客学习笔记</strong></p>
+<p><strong>总结代码路径：</strong><a target="_blank" rel="noopener" href="https://github.com/Xw-oorik/Qt-1">Xw-oorik&#x2F;Qt-1: Qt自学 第一部分总结 (github.com)</a></p>
 <h3 id="QTimer-定时器"><a href="#QTimer-定时器" class="headerlink" title="QTimer 定时器"></a>QTimer 定时器</h3><blockquote>
 <pre><code class="cpp">// 构造函数
 // 如果指定了父对象, 创建的堆内存可以自动析构
@@ -991,6 +992,36 @@ void MainWindow::on_chat_clicked()
            data-src="/../images/Qt-window/image-20230607230038578.png" >
         </sapn>
       </p>
+<h4 id="停靠窗口"><a href="#停靠窗口" class="headerlink" title="停靠窗口"></a>停靠窗口</h4><p>停靠窗口可以通过鼠标拖动停靠到窗口的上、下、左、右，或者浮动在窗口上方。如果需要这种类型的窗口必须手动添加，如果在非QMainWindow类型的窗口中添加了停靠窗口, 那么这个窗口是不能移动和浮动的。<br>浮动窗口在工具栏中， 直接将其拖拽到 UI 界面上即可。</p>
+<p>右下角可以设置一些属性</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230607233603728.png" >
+        </sapn>
+      </p>
+<h3 id="资源文件-qrc"><a href="#资源文件-qrc" class="headerlink" title="资源文件 .qrc"></a>资源文件 .qrc</h3><p>把exe需要加载的资源，加载到一个文件中</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230608001915498.png" >
+        </sapn>
+      </p>
+<p>add prefix 是我们要添加的资源在资源文件中的路径 ，add files添加资源文件，注意资源文件在pro位置同级或者更深，路径，名称最好不要带中文</p>
+<p>&#x2F;…&#x2F;…</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230608002047608.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="/../images/Qt-window/image-20230608002848938.png" >
+        </sapn>
+      </p>
+<p>以后把要用到的文件搞成一个资源文件夹，代码里资源路径就用资源文件夹里的，这样打包成exe之后，这些资源都是可使用的</p>
 
         <!-- 分类文章 -->
         
